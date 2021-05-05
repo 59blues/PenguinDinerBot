@@ -1,11 +1,10 @@
 # penguinDiner
 
-I want to automate this game called Penguin Diner, using pyautogui module. 
+I am learning to automate this game, Penguin Diner, using the pyautogui module.
+Penguin Diner is played using the mouse only.
+In short, I want to create a script so this game is able to run independently without human intervention.
 
-I initiated this project after taking on Al Sweigart's programming course - Automate the boring stuff with python. 
+Work in progress.
 
-In short, pyautogui will control the mouse cursor and run the game on its own, without human interaction.
-
-
-!!! This project is still in progress
+Inspired by Al Sweigart - Automate the Boring Stuff
 
