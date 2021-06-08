@@ -1,0 +1,80 @@
+import pyautogui, os, logging,time
+
+##logging.basicConfig(level=logging.DEBUG,format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.DEBUG,format='%(levelname)s - %(message)s')
+
+game_region = (347,163,800,530)  #(x,y top left corner, width, height)
+table_region = (347,648,486,80)
+serve_region = (514,235,566,386)
+print(os.getcwd())
+
+def main():
+    logging.debug('Program Started. Press Ctrl-C to abort at any time.\n')
+    startServing()
+
+def imPath(filename):
+    return os.path.join('images',filename)
+
+def foodPath(filename):
+    return os.path.join('images\ifood',filename)
+
+def foodPath2(filename):
+    return os.path.join('images\ifood\poopinghead',filename)
+
+
+def startServing():
+        image_list=[imPath('pingu.png'),imPath('ping.png'),imPath('pingu2.png')]
+        image_list2 = [imPath('pinguw333.png'),imPath('pingu3.png'),imPath('pinguw4.png'),imPath('pinguw5.png')]
+        food_list=[foodPath('f1.png'),foodPath('f2.png'),foodPath('f3.png'),foodPath('f4.png'),foodPath('f5.png'),foodPath('f6.png'),foodPath('f7.png'),foodPath('f8.png'),foodPath('f9.png')]
+        moolah_list = [foodPath('m1.png'),foodPath('m2.png'),foodPath('m3.png')]
+        diners = []
+
+        r = None
+        while r is None:
+            logging.debug('Looking for Pingus... ')
+            for image in image_list:
+                r = pyautogui.locateCenterOnScreen(image, region=game_region,confidence = 0.72)  # check for single or double pingu
+                if r:
+                    pyautogui.click(r, duration=0.25)
+                    logging.debug('Clicked on Pingu.')
+
+                    pos = pyautogui.locateCenterOnScreen(imPath('table2.png'), region=game_region,confidence = 0.65)
+                    pyautogui.click(pos, duration=0.25)
+                    logging.debug('Clicked on Table.')
+            print(' ')
+
+            logging.debug('Checking for orders... ')
+            for image in image_list2:
+                r = pyautogui.locateCenterOnScreen(image, region=game_region, grayscale= True, confidence = 0.8)  # check for orders
+                if r not in diners and r is not None:
+                    pyautogui.click(r,duration=0.25)
+                    logging.debug('''Took pingu's order''')
+                    diners.append(r)
+                    print(diners)
+            print(' ')
+
+            logging.debug('Checking for food served: ')
+            for food in food_list:  # check if food is served
+                r = pyautogui.locateCenterOnScreen(food, region=table_region, confidence = 0.85)
+                if r:
+                    print(food[13:])
+                    pyautogui.click(r, duration=0.25)
+                    c = pyautogui.locateCenterOnScreen(foodPath2(food[13:]), region=serve_region,confidence = 0.75)
+                    if c:
+                        print('located customer')
+                        pyautogui.click(c, duration=0.25)
+                else:
+                    print('no food found '+ food[14])
+            print(' ')
+
+            logging.debug('Checking for money...')     
+            for moolah in moolah_list:
+##                print('checking for money')
+                m = pyautogui.locateCenterOnScreen(moolah, region=serve_region, confidence = 0.75)
+                if m:
+                    pyautogui.click(m, duration=0.25)
+
+            print(' ')
+            r = None
+
+main()
