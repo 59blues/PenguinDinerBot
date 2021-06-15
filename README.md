@@ -1,6 +1,6 @@
 # Penguin Diner Bot
 
-I am learning to automate this game with pyautogui.
+I have created a simple bot to automate this game.
 
 Inspired by Al Sweigart - Automate the Boring Stuff
 
