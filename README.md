@@ -3,6 +3,7 @@
 I have created a simple bot to automate this game.
 
 This is not a tutorial. I don't think the bot is very efficient but it is enough to get the game running.
+
 I build this bot to practise python.
 
 
