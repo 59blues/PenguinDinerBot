@@ -1,5 +1,5 @@
 import pyautogui, os, logging,time
-## This is a test
+
 logging.basicConfig(level=logging.DEBUG,format='%(levelname)s - %(message)s')
 
 game_region = (347,163,800,530)  #(x,y top left corner, width, height)
