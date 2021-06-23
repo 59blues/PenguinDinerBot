@@ -42,7 +42,6 @@ def startServing():
                         pos = pyautogui.locateCenterOnScreen(t, region=game_region,confidence = 0.78)
                         if pos:
                             pyautogui.click(pos, duration=0.25)
-        ##                            logging.debug('Clicked on Table.')
                             logging.debug('clicked on'+t)
                             break
                             
